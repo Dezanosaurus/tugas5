@@ -1,0 +1,538 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- STYLING NAVBAR UMUM --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Hitam transparan modern */
+    padding: 15px 0;
+    z-index: 1000;
+    border-bottom: 1px solid #00f2ff; /* Garis neon biru */
+}
+
+.nav-container {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-logo span {
+    color: #00f2ff;
+}
+
+/* --- NAV LINKS (Tampilan Desktop) --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00f2ff;
+    text-shadow: 0 0 10px #00f2ff;
+}
+
+/* --- HAMBURGER (Default: Sembunyi) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #00f2ff;
+    transition: 0.4s;
+}
+
+/* --- RESPONSIVE (Tampilan Mobile / HP) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Munculkan hamburger di HP */
+    }
+
+    .nav-links {
+        position: fixed;
+        left: -100%; /* Sembunyi ke kiri luar layar */
+        top: 65px;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.98);
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        padding-top: 50px;
+        transition: 0.5s;
+    }
+
+    /* Muncul saat menu aktif */
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 25px 0;
+    }
+
+    /* Animasi Hamburger menjadi X */
+    .hamburger.active .bar:nth-child(2) { 
+        opacity: 0; 
+    }
+    .hamburger.active .bar:nth-child(1) { 
+        transform: translateY(8px) rotate(45deg); 
+    }
+    .hamburger.active .bar:nth-child(3) { 
+        transform: translateY(-8px) rotate(-45deg); 
+    }
+}
+
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    z-index: 9999;
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none; /* Supaya tetap bisa klik elemen di bawahnya */
+}
+
+body {
+    background-color: #050505; /* Hitam Pekat */
+    color: #e0e0e0;
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    max-width: 1200px;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    color: #00f2ff; /* Warna Neon Cyan */
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+    border-bottom: 2px solid #00f2ff;
+}
+
+#heroVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1; /* Di belakang teks */
+    filter: brightness(0.4); /* Biar teks tetap kebaca */
+    object-fit: cover;
+}
+.hero { position: relative; overflow: hidden; }
+.hero-content { position: relative; z-index: 1; }
+
+.logo { font-size: 4rem; margin-bottom: 10px; }
+.slogan { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.8; }
+
+/* Neon Button */
+.btn-neon {
+    display: inline-block;
+    padding: 15px 30px;
+    color: #00f2ff;
+    border: 2px solid #00f2ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+.btn-neon:hover {
+    background: #00f2ff;
+    color: #000;
+    box-shadow: 0 0 40px #00f2ff;
+}
+
+/* About Section */
+.about { background: #0a0a0a; }
+
+/* Gallery Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #111;
+    padding: 25px;
+    border: 1px solid #333;
+    transition: 0.4s;
+}
+
+.card:hover {
+    border-color: #ff00ff; /* Aksen Neon Magenta */
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+}
+
+.price {
+    display: block;
+    margin-top: 15px;
+    color: #ff00ff;
+    font-weight: bold;
+}
+
+/* Styling Gambar di dalam Card */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Agar gambar tidak penyet */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    filter: grayscale(30%) brightness(0.8); /* Efek sedikit gelap agar dramatis */
+    transition: 0.3s;
+    border: 1px solid #333;
+}
+
+.card:hover img {
+    filter: grayscale(0%) brightness(1); /* Gambar jadi berwarna saat di-hover */
+    border-color: #00f2ff;
+}
+
+/* Tambahan background pada Hero agar lebih tech */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.newsletter {
+    background: #080808;
+    padding: 60px 0;
+    border-top: 1px dashed #333;
+}
+.subscribe-box {
+    margin-top: 20px;
+}
+.subscribe-box input {
+    background: #111;
+    border: 1px solid #00f2ff;
+    padding: 10px;
+    color: white;
+    width: 250px;
+}
+.subscribe-box button {
+    background: #00f2ff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.subscribe-box button:hover {
+    background: #ff00ff; /* Berubah jadi magenta saat hover */
+    color: white;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #333;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    background: #000;
+}
+
+.copyright { margin-top: 20px; opacity: 0.5; }
+
+/* Garis pemisah neon */
+hr.neon-line {
+    border: 0;
+    height: 2px;
+    background: #00f2ff;
+    box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+    margin: 0;
+}
+
+/* Animasi sederhana pada teks Hero */
+.slogan {
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 24%, 55% { opacity: 0.5; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #00f2ff;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* Bentuk segitiga */
+    box-shadow: 0 0 15px #00f2ff;
+}
+
+.typing {
+    border-right: 2px solid #00f2ff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.specs-bar {
+    text-align: left;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.bar {
+    background: #222;
+    height: 4px;
+    width: 100%;
+    margin-top: 5px;
+}
+.fill {
+    background: #00f2ff;
+    height: 100%;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+.status-badge {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+    padding: 2px 8px;
+    border: 1px solid #00f2ff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chat-widget {
+    position: fixed;
+    bottom: 80px; /* Di atas tombol back to top */
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.chat-icon {
+    width: 50px;
+    height: 50px;
+    background: #00f2ff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 0 15px #00f2ff;
+}
+
+.chat-status {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid #00f2ff;
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 2s forwards;
+    animation-delay: 1.5s;
+}
+
+.loader-text {
+    font-family: 'Orbitron';
+    color: #00f2ff;
+    letter-spacing: 5px;
+    border-right: 2px solid #00f2ff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 1s steps(20, end);
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Efek Background Grid Futuristik */
+body {
+    background-image: 
+        linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px; /* Ukuran kotak grid */
+    background-attachment: fixed; /* Membuat grid tetap diam saat di-scroll */
+}
+
+.logo:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); text-shadow: -2px 0 #ff00ff, 2px 0 #00f2ff; }
+    25% { transform: translate(-2px, 2px); text-shadow: 2px 0 #ff00ff, -2px 0 #00f2ff; }
+    50% { transform: translate(2px, -2px); text-shadow: -2px 0 #ff00ff, 2px 0 #00f2ff; }
+    75% { transform: translate(-2px, -2px); text-shadow: 2px 0 #ff00ff, -2px 0 #00f2ff; }
+    100% { transform: translate(0); }
+}
+
+/* Efek Muncul dari Bawah */
+.card, .about, .specs {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Class ini akan ditambahkan saat discroll (Manual via CSS saja untuk simulasi simpel) */
+.card:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Supaya langsung terlihat saat pertama buka tanpa JS ribet, kita set default sedikit transparan */
+.card, .about {
+    opacity: 0.9;
+    transform: translateY(0);
+}
+
+/* Sembunyikan kursor asli di seluruh halaman */
+* {
+    cursor: none !important;
+}
+
+/* Titik pusat kursor */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00f2ff;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+/* Lingkaran luar yang mengikuti (efek smooth) */
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 15px #ff00ff;
+    transition: transform 0.1s ease-out; /* Efek delay halus */
+}
+
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10000; /* Pastikan di atas segalanya */
+    pointer-events: none; /* Agar tidak mengganggu klik tombol */
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablet & HP (Lebar layar di bawah 768px) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Sembunyikan menu teks di HP untuk kesederhanaan */
+    }
+    
+    .logo {
+        font-size: 2.5rem; /* Perkecil ukuran judul di HP */
+    }
+
+    .container {
+        width: 90%; /* Beri sedikit ruang di pinggir layar */
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Gallery jadi 1 kolom saja di HP */
+    }
+
+    .system-time {
+        display: none; /* Sembunyikan jam sistem di HP agar tidak menutupi konten */
+    }
+
+    .hero {
+        padding-top: 100px;
+    }
+}
+
+/* Penyesuaian khusus untuk elemen yang lebar */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mengatur agar tabel spek bisa di-scroll secara horizontal di HP */
+.specs {
+    overflow-x: auto;
+}
+
+table {
+    min-width: 500px; /* Supaya tabel tidak penyet di layar kecil */
+}
